@@ -1,7 +1,11 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
+    {% if title %}
     {{ title }} - APP
+    {% else %}
+    <title>APP</title>
+    {% endif %}
 {% endblock %}
 
 {% block navbar %}
@@ -19,6 +23,16 @@
 
 {% block content %}
     <div class="container">
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <div class="alert alert-info">{{ message }}</div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         <table class="tab-content">
             <tr>
                 <td>
