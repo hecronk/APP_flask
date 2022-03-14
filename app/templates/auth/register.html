@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div class="container">
+        <table class="tab-content">
+            <tr>
+                <td>
+                    <h1>Registration form</h1>
+                </td>
+                <td style="padding-left: 500px">
+                    {{ wtf.quick_form(form) }}
+                    <p>Already have account? <a href="{{ url_for('auth.login') }}">Click to Login!</a></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
