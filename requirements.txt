@@ -1,3 +1,5 @@
 Flask-Bootstrap==3.3.7.1
 Flask==2.0.3
+Flask_Wtf==1.0.0
 python-dotenv==0.19.2
+Flask-Login==0.5.0
