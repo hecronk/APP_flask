@@ -22,34 +22,7 @@
         <table class="tab-content">
             <tr>
                 <td>
-                    <div class="container" style="width: 150px">
-                        <ul class="nav flex-column" style="width: 120px">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">
-                                    <img src="{{ url_for('static', filename = 'icons/house.svg') }}"> My page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('main.index') }}">
-                                    <img src="{{ url_for('static', filename = 'icons/newspaper.svg') }}"> Feed</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <img src="{{ url_for('static', filename = 'icons/chat.svg') }}"> Messages</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <img src="{{ url_for('static', filename = 'icons/people.svg') }}"> Friends</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <img src="{{ url_for('static', filename = 'icons/list.svg') }}"> Discover</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <img src="{{ url_for('static', filename = 'icons/gear.svg') }}"> Settings</a>
-                            </li>
-                        </ul>
-                    </div>
+                    {% include 'main/_control_panel.html' %}
                 </td>
                 <td class="text-center" style="width: 1000px">
                     {% block app_content %}{% endblock %}
