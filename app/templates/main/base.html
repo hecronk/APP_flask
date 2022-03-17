@@ -12,10 +12,19 @@
     <nav class="navbar navbar-default" style="min-width: 1252px">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar" style="text-decoration: none" href="{{ url_for('main.index') }}">
-                    <img src="{{ url_for('static', filename = 'icons/people-fill.svg') }}">
-                    <b>APP</b>
-                </a>
+                <table>
+                    <tr>
+                        <td>
+                            <a class="navbar" style="text-decoration: none" href="{{ url_for('main.index') }}">
+                                <img src="{{ url_for('static', filename = 'icons/people-fill.svg') }}">
+                                <b>APP</b>
+                            </a>
+                        </td>
+                        <td style="padding-left: 770px">
+                            <a href="{{ url_for('auth.logout') }}">Logout</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </nav>
@@ -36,7 +45,9 @@
         <table class="tab-content">
             <tr>
                 <td>
+                    {% if current_user.is_authenticated %}
                     {% include 'main/_control_panel.html' %}
+                    {% endif %}
                 </td>
                 <td class="text-center" style="width: 1000px">
                     {% block app_content %}{% endblock %}
