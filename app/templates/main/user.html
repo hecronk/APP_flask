@@ -2,9 +2,19 @@
 
 {% block app_content %}
     <table>
-        <tr valign="top">
-            <td><img src="{{ avatars.gravatar(user.email) }}"></td>
-            <td style="padding-left: 40px"><h1>{{ user.username }}</h1></td>
+        <tr>
+            <td><img src={{ avatars.gravatar(user.email)}}></td>
+            <td>
+                <table>
+                    <tr>
+                        <td style="padding-left: 10px" align="left"><h1>{{ user.username }}</h1></td>
+                        <td style="padding-left: 350px">{% if user.last_seen %}<p>Last seen on {{ moment(user.last_seen).format('LLL') }}</p>{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 10px">{% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}</td>
+                    </tr>
+                </table>
+            </td>
         </tr>
     </table>
     {% for post in posts %}

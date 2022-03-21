@@ -21,7 +21,11 @@
                             </a>
                         </td>
                         <td style="padding-left: 770px">
+                            {% if current_user.is_authenticated %}
                             <a href="{{ url_for('auth.logout') }}">Logout</a>
+                            {% else %}
+                            <a href="{{ url_for('auth.login') }}">Login</a>
+                            {% endif %}
                         </td>
                     </tr>
                 </table>
@@ -55,4 +59,9 @@
             </tr>
         </table>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
 {% endblock %}
