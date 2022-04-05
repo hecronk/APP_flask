@@ -3,7 +3,26 @@
 {% block app_content %}
     <table>
         <tr>
-            <td><img src={{ avatars.gravatar(user.email)}}></td>
+            <td>
+                <img src={{ avatars.gravatar(user.email)}}>
+                {% if user == current_user %}
+                <p><a href="">Edit your profile</a></p>
+                {% elif not current_user.is_following(user) %}
+                <p>
+                    <form action="{{ url_for('main.follow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value='Follow' , class_='btn btn-default') }}
+                    </form>
+                </p>
+                {% else %}
+                <p>
+                    <form action="{{ url_for('main.unfollow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value='Unfollow', class_='btn btn-default') }}
+                    </form>
+                </p>
+                {% endif %}
+            </td>
             <td>
                 <table>
                     <tr>
